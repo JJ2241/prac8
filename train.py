@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-print("Training started...")
+print("Training started..")
 
 def train_model():
     data = load_iris()
