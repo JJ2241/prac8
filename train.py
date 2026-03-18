@@ -6,17 +6,11 @@ import joblib
 print("Training started..")
 
 def train_model():
-    data = load_iris()
-    X = data.data
-    y = data.target
+    X, y = load_iris(return_X_y=True)
+    Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, test_size=0.2)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-    model = RandomForestClassifier()
-    model.fit(X_train, y_train)
-
-    accuracy = model.score(X_test, y_test)
-    print(f"Model Accuracy: {accuracy}")
+    model = RandomForestClassifier().fit(Xtrain, ytrain)
+    print(f"Model Accuracy: {model.score(Xtest, ytest)}")
 
     joblib.dump(model, "model.pkl")
 
